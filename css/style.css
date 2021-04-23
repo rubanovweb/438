@@ -231,7 +231,7 @@ header nav {
     }
 }
 
-@media(max-width: 768px) {
+@media(max-width: 992px) {
     .main-menu {
         justify-content: flex-end;
     }
