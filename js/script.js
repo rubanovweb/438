@@ -1,3 +1,45 @@
+// Примитивные
+//string "123"
+//number 12; 14.6
+//boolean true/false
+//null
+//undefined
+//symbol
+
+//Сложные
+//object ==> массивы, объекты, функции
+
+/*** МЕТОДЫ МАССИВА
+1) push / unshift - добавление эл-та(ов) в конец/начало массива
+2) pop / shift - удаление последнего/первого элемента в массиве
+
+3) slice() - без параметров создаёт полную копию массива
+   slice(0, 3) - выбирает элементы с 0-го до 3-го (не включая)
+   slice(0, -2) - выбирает элементы с 0-го до конца массива, кроме последних 2-х
+
+4) splice(0, 3) - удаляет 3 элемента с начала
+   splice(-3, 3) - удаляет 3 элемента с конца
+   splice(0, 3, 1000, 2000) - удаляет 3 элемента с начала и вставляет 2 новых (1000 и 2000)
+***/
+
+let mas = [100, 200, 300, 400, 500];
+
+for(let i = 0; i < mas.length; i++) {
+  console.log(`${i + 1}. ${mas[i]}`);
+}
+
+console.log("*******");
+
+for(let i in mas) {
+  console.log(`${+i + 1}. ${mas[i]}`);
+}
+
+
+
+
+
+
+
 //**** Мини-калькулятор ****
 // сложение 2-х чисел
 // разность 2-х чисел
@@ -6,81 +48,81 @@
 // возведение числа в n-степень
 // корень n-й степени
 
-let cancel = true;
-let menu = `Ваш выбор (0-6):
-1. Сложение 2-х чисел
-2. Разность 2-х чисел
-3. Произведение 2-х чисел
-4. Деление 2-х чисел
-5. Возведение числа в n-ю степень
-6. Вычисление корня n-й степени
-0. Отмена`;
+// let cancel = true;
+// let menu = `Ваш выбор (0-6):
+// 1. Сложение 2-х чисел
+// 2. Разность 2-х чисел
+// 3. Произведение 2-х чисел
+// 4. Деление 2-х чисел
+// 5. Возведение числа в n-ю степень
+// 6. Вычисление корня n-й степени
+// 0. Отмена`;
 
-let num1, num2;
-let result; //сумма, разность, произведение...
+// let num1, num2;
+// let result; //сумма, разность, произведение...
 
-do {
-  let operation = prompt(menu, "0");
+// do {
+//   let operation = prompt(menu, "0");
 
-  switch(operation) {
-    case "1": num1 = +prompt("Первое число:");
-              num2 = +prompt("Второе число:");
+//   switch(operation) {
+//     case "1": num1 = +prompt("Первое число:");
+//               num2 = +prompt("Второе число:");
 
-              result = num1 + num2;
-              alert(`Сумма чисел = ${result}`);
-              break;
-    case "2": num1 = prompt("Первое число:");
-              num2 = prompt("Второе число:");
+//               result = num1 + num2;
+//               alert(`Сумма чисел = ${result}`);
+//               break;
+//     case "2": num1 = prompt("Первое число:");
+//               num2 = prompt("Второе число:");
 
-              result = num1 - num2;
-              alert(`Разность чисел = ${result}`);
-              break;
-    case "3": num1 = prompt("Первое число:");
-              num2 = prompt("Второе число:");
+//               result = num1 - num2;
+//               alert(`Разность чисел = ${result}`);
+//               break;
+//     case "3": num1 = prompt("Первое число:");
+//               num2 = prompt("Второе число:");
 
-              result = num1 * num2;
-              alert(`Произведение чисел = ${result}`);
-              break;
-    case "4": num1 = prompt("Первое число:");
-              num2 = prompt("Второе число:");
+//               result = num1 * num2;
+//               alert(`Произведение чисел = ${result}`);
+//               break;
+//     case "4": num1 = prompt("Первое число:");
+//               num2 = prompt("Второе число:");
 
-              if(num2 != 0) {
-                result = num1 / num2;
-                alert(`Частное 2-х чисел = ${result.toFixed(2)}`);
-              }
-              else {
-                alert(`Делить на 0 нельзя!`);
-              }
-              break;
-    case "5": num1 = prompt("Число:");
-              num2 = prompt("Степень:");
+//               if(num2 != 0) {
+//                 result = num1 / num2;
+//                 alert(`Частное 2-х чисел = ${result.toFixed(2)}`);
+//               }
+//               else {
+//                 alert(`Делить на 0 нельзя!`);
+//               }
+//               break;
+//     case "5": num1 = prompt("Число:");
+//               num2 = prompt("Степень:");
 
-              if(num2 < 0) {
-                result = Math.pow(num1, num2).toFixed(4);  
-              }
-              else {
-                // result = num1**num2;
-                result = Math.pow(num1, num2);
-              }
+//               if(num2 < 0) {
+//                 result = Math.pow(num1, num2).toFixed(4);  
+//               }
+//               else {
+//                 // result = num1**num2;
+//                 result = Math.pow(num1, num2);
+//               }
 
-              alert(`Число ${num1} в степени ${num2} = ${result}`);
-              break;
-    case "6": num1 = prompt("Число:");
-              num2 = prompt("Степень корня:");
+//               alert(`Число ${num1} в степени ${num2} = ${result}`);
+//               break;
+//     case "6": num1 = prompt("Число:");
+//               num2 = prompt("Степень корня:");
 
-              result = Math.pow(num1, 1 / num2);
-              alert(`Корень степени ${num2} из числа ${num1} = ${result}`);
+//               result = Math.pow(num1, 1 / num2);
+//               alert(`Корень степени ${num2} из числа ${num1} = ${result}`);
 
-              break;
-    
-    //отмена (закрытие меню)
-    case "0": 
-    case null: cancel = false;
-              break;
-    default:  alert("Ошибка! Неверный выбор!!!");
-              break;
-  }
-} while(cancel);
+//               break;
+
+//     //отмена (закрытие меню)
+//     case "0": 
+//     case null: cancel = false;
+//               break;
+//     default:  alert("Ошибка! Неверный выбор!!!");
+//               break;
+//   }
+// } while(cancel);
 
 
 
