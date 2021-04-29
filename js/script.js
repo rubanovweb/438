@@ -3,7 +3,7 @@
 let button = {
    id: "generateBtn",
    text: "Купить",
-   class: "btn",
+   class: "btn animate__animated",
    isBorder: false
 };
 
@@ -22,15 +22,25 @@ let div = document.querySelector(".buttons");
 let btn;
 
 select.addEventListener("input", () => {
-   
-   if(document.getElementById("generateBtn")) {
-      btn.className = "btn " + select.value;
+   if(document.getElementById(button.id)) {
+      btn.className = `${button.class} ${select.value}`;
+      btn.classList.add("animate__bounceIn");
+
+      setTimeout(()=>{
+         btn.classList.remove("animate__bounceIn");
+      }, 1000);
    }
    else {
       btn = document.createElement("button");
       btn.id = button.id;
       btn.textContent = button.text;
-      btn.className = "btn " + select.value;
+      btn.className = `${button.class} ${select.value}`;
+
+      btn.classList.add("animate__backInDown");
+
+      setTimeout(() => {
+         btn.classList.remove("animate__backInDown");
+      }, 2000);
 
       div.insertAdjacentElement("afterend", btn);
    }
