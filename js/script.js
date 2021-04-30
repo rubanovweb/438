@@ -283,47 +283,59 @@ function getParametrs(oper) {
 function checkParametrs(str1, str2) {
    let p1, p2;
    let cancel;
+   let exit = true;
+   
+   start:
+   if(exit) {
+      do {
+         p1 = prompt(str1);
+         cancel = checkP(p1);
 
-   do {
-      cancel = false;
-      p1 = +prompt(str1);
+         if(cancel == "undefined") {
+            break;
+         }
+         if(!cancel) {
+            do {
+               p2 = prompt(str2);
+               cancel = checkP(p2);
 
-      if(p1 == 0) {
-         p1 = undefined;
-         break;
-      }
-      if(isNaN(p1)) {
-         alert("Вы ввели не число!");
-         cancel = true;
-      }
-      else {
-         do {
-            cancel = false;
-            p2 = +prompt(str2);
+               if(cancel == "undefined") {
+                  exit = false;
+                  break start;
+               }
 
-            if(p2 == 0) {
-               p2 = undefined;
-               break;
-            }
-            if(isNaN(p2)) {
-               alert("Вы ввели не число!");
-               cancel = true;
-            }
-         } while(cancel);
-      }
-   } while(cancel);
+            } while(cancel);
+         }
+      } while(cancel);
+   }
 
    return [p1, p2];
+}
+
+function checkP(param) {
+   if(!param && typeof param == "object") {
+      param = "undefined";
+      return param;
+   }
+   if(param == "" || isNaN(+param)) {
+      alert("Пустая строка или не число!");
+      return true;
+   }
+   return false;
 }
 
 function getResult(params, oper) {
    let result;
    let p1 = params[0], p2 = params[1];
 
-   if( (typeof p1).toString() == "undefined" || (typeof p2).toString() == "undefined") {
+   if(!p1 && typeof p1 == "object" ||
+      !p2 && typeof p2 == "object") {
       result = "Вы отменили ввод!";
    }
    else {
+      p1 = +p1;
+      p2 = +p2;
+
       switch(oper) {
          case "+": result = `Сумма чисел = ${p1 + p2}`;
                   break;
@@ -354,7 +366,6 @@ function getResult(params, oper) {
                   break;
       }
    }
-
    return result;
 }
 
