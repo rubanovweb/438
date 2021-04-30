@@ -13,10 +13,8 @@ else {
          mas.push(str);
          str += symb;
       }
-
       return mas;
    }
-
    console.log(setMas(symb));
 }
 
