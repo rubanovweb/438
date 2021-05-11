@@ -1,22 +1,53 @@
+// 38. Дан массив с числами.Выведите последовательно его элементы используя рекурсию и не используя цикл.
+
+let mas = [];
+
+const setElements = () => {
+	for (let i = 0; i < 2; i++) {
+		mas.push(Math.ceil(Math.random() * 10));
+	}
+}
+
+setElements();
+
+const getElements = (index) => {
+
+	if (index < mas.length) {
+		return mas[index].toString() + '\n' + getElements(index + 1);
+	}
+	return "";
+}
+
+console.log(getElements(0));
+
+
+// let factRecourse = function innerFact(num) {
+// 	if (num <= 1) {
+// 		return 1;
+// 	}
+// 	return num * innerFact(num - 1);
+// }
+
+
 // Заполните массив следующим образом: в первый элемент запишите 'x', во второй 'xx', в третий 'xxx' и так далее.
 
-let symb = prompt("Введите символ");
-if(symb.length != 1) {
-   alert("Только один символ!!!");
-}
-else {
-   let setMas = symb => {
-      let mas = [];
-      let str = symb;
-      
-      for(let i = 0; i < 10; i++) {
-         mas.push(str);
-         str += symb;
-      }
-      return mas;
-   }
-   console.log(setMas(symb));
-}
+// let symb = prompt("Введите символ");
+// if(symb.length != 1) {
+//    alert("Только один символ!!!");
+// }
+// else {
+//    let setMas = symb => {
+//       let mas = [];
+//       let str = symb;
+
+//       for(let i = 0; i < 10; i++) {
+//          mas.push(str);
+//          str += symb;
+//       }
+//       return mas;
+//    }
+//    console.log(setMas(symb));
+// }
 
 // let factRecourse = function innerFact(num) {
 //    if(num <= 1) {
@@ -145,13 +176,13 @@ else {
 // //Проверяет параметры
 // function checkParametrs(str1, str2) {
 //    let p1, p2; //параметры (вводимые пользователем значения)
-   
+
 //    let cancel; //флаг для анализа выхода из цикла
 //                //когда значение false - выходим из цикла
 
 //    let exit = true; //флаг для выхода из внутреннего цикла
 //                     //когда значение false - выходим из цикла
-   
+
 //    start:
 //    if(exit) {
 //       do {
@@ -417,7 +448,7 @@ else {
 
 //   if(isArray) {
 //     let innerCount = +prompt("Кол-во элементов в массиве?");
-    
+
 //     matrix[i] = []; //элемент массива - сам является массивом
 
 //     for(let j = 0, elem = ""; j < innerCount; j++) {
