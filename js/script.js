@@ -14,6 +14,7 @@ function Button(id, styles, name, types) {
   this.btnStyles = {};
 
   // Формирование дефолтных свойств (для всех кнопок)
+
   for (let key in styles) {
     this.defaultStyles[key] = styles[key];
   }
@@ -32,14 +33,14 @@ function Button(id, styles, name, types) {
     let btn = document.createElement("button"); //создание тега button
     btn.id = this.id; //задаём атрибут id из св-ва объекта
 
-    //задаём общие свойства для кнопки
+    // задаём общие свойства для кнопки
     // key - имя свойства
     // this.defaultStyles - свойство (объект) со стилями по умолчанию
     for (let key in this.defaultStyles) {
       btn.style[key] = this.defaultStyles[key];
     }
 
-    //задаём индивидуальные свойства для кнопки
+    // задаём индивидуальные свойства для кнопки
     // key - имя свойства
     // this.btnStyles - свойство (объект) со индивидуальными свойствами
     for (let key in this.btnStyles) {
@@ -51,14 +52,19 @@ function Button(id, styles, name, types) {
   };
 }
 
-let ids = ["buy", "more", "read"];
-let defaultStyles = {
+// массив с id кнопок
+const ids = ["buy", "more", "read", "link"];
+
+// объект с общими CSS-свойствами кнопок
+const defaultStyles = {
   color: "white",
   padding: "10px 15px",
   fontSize: "14px",
+  marginRight: "15px",
 };
 
-let typeButtons = {
+// объект с разновидностями кнопок - содержит индивидуальные CSS-свойства
+const typeButtons = {
   buy: {
     backgroundColor: "darkred",
     boxShadow: "0 0 5px 0 red",
@@ -71,12 +77,21 @@ let typeButtons = {
     backgroundColor: "darkgreen",
     transform: "scale(1.1)",
   },
+  link: {
+    textDecoration: "underline",
+    backgroundColor: "transparent",
+    padding: "0",
+    color: "red",
+    border: "none",
+  },
 };
 
-let namesButton = ["Купить", "Подробнее", "Читать"];
+// массив с названиями кнопок
+const namesButton = ["Купить", "Подробнее", "Читать", "Перейти на Яндекс"];
+// массив для хранения объектов (кнопок)
 let buttons = [];
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < namesButton.length; i++) {
   buttons[i] = new Button(ids[i], defaultStyles, namesButton[i], typeButtons);
 }
 
