@@ -1,3 +1,55 @@
+const formUsers = document.forms.formUsers;
+const fldCountUsers = formUsers.elements.countUsers;
+const fldUserName = formUsers.elements.userName;
+const fldLogin = formUsers.elements.login;
+const fldStatus = formUsers.elements.status;
+const btnAddUser = formUsers.elements.addUser;
+const btnClear = formUsers.elements.clear;
+
+let userName, login;
+
+fldCountUsers.addEventListener("input", () => {
+  if (+fldCountUsers.value != 0) {
+    fldUserName.removeAttribute("disabled");
+  } else {
+    fldUserName.setAttribute("disabled", "");
+  }
+});
+
+fldUserName.addEventListener("input", () => {
+  userName = fldUserName.value.trim();
+
+  if (userName != "") {
+    fldLogin.removeAttribute("disabled");
+    btnClear.removeAttribute("disabled");
+  } else {
+    fldLogin.setAttribute("disabled", "");
+  }
+});
+
+fldLogin.addEventListener("input", () => {
+  login = fldLogin.value.trim();
+
+  if (login != "") {
+    fldStatus.removeAttribute("disabled");
+    btnAddUser.removeAttribute("disabled");
+  } else {
+    fldStatus.setAttribute("disabled", "");
+  }
+});
+
+btnClear.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  for (let field of formUsers) {
+    if (field != formUsers.elements.countUsers) {
+      // field.value = "";
+      field.setAttribute("disabled", "disabled");
+    }
+  }
+});
+
+// console.log(btnAddUser);
 class User {
   //name, login, isAdmin - формальные параметры
 
@@ -6,9 +58,9 @@ class User {
 
   #name;
   #login;
-  #isAdmin;
+  #status;
 
-  constructor(name, login, isAdmin) {
+  constructor(name, login, status) {
     User.#countUsers++;
 
     if (User.#countUsers > User.MAX_COUNT_USERS) {
@@ -16,7 +68,7 @@ class User {
     } else {
       this.#name = name;
       this.#login = login;
-      this.#isAdmin = isAdmin;
+      this.#status = status;
     }
   }
 
@@ -44,14 +96,14 @@ class User {
     }
   }
 
-  get IsAdmin() {
-    return this.#isAdmin;
+  get Status() {
+    return this.#status;
   }
-  set IsAdmin(value) {
-    if (typeof value == "boolean") {
-      this.#isAdmin = value;
+  set Status(value) {
+    if (typeof value == "string") {
+      this.#status = value;
     } else {
-      console.log("Значение должно быть булевского типа!");
+      console.log("Значение должно быть строкового типа!");
     }
   }
 
@@ -61,7 +113,7 @@ class User {
     str += `Имя: ${this.Name}\n`;
     str += `Логин: ${this.Login}\n`;
 
-    if (this.IsAdmin) {
+    if (this.Status == "admin") {
       str += `Является админом!`;
     } else {
       str += `Обычный пользователь :(`;
@@ -77,18 +129,18 @@ class User {
 }
 
 let users = []; // массив пользователей (объектов)
-const countUsers = +prompt(
-  `Кол-во пользователей (до ${User.MAX_COUNT_USERS}):`
-);
+// const countUsers = +prompt(
+//   `Кол-во пользователей (до ${User.MAX_COUNT_USERS}):`
+// );
 
-if (countUsers > User.MAX_COUNT_USERS) {
-  alert("Слишком много пользователей!");
-} else {
-  createUsers();
-}
+// if (countUsers > User.MAX_COUNT_USERS) {
+//   alert("Слишком много пользователей!");
+// } else {
+//   createUsers();
+// }
 
 function createUsers() {
-  let userName, login, isAdmin;
+  let userName, login, status;
 
   for (let i = 0; i < countUsers; i++) {
     userName = prompt(`Имя ${i + 1}-пользователя:`);
@@ -101,10 +153,10 @@ function createUsers() {
       login = "guest";
     }
 
-    isAdmin = confirm("Пользователь с правами администратора?");
+    status = confirm("Пользователь с правами администратора?");
 
     //создание нового объекта (пользователя) и добавление в массив users
-    users[i] = new User(userName, login, isAdmin);
+    users[i] = new User(userName, login, status);
   }
 }
 
@@ -114,7 +166,7 @@ function getInfoUsers() {
   }
 }
 
-getInfoUsers();
+// getInfoUsers();
 
 /*** ОБЪЕКТЫ (начало) ***/
 
