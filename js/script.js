@@ -31,7 +31,7 @@ btnAddUser.addEventListener("click", (e) => addUsers(e));
 btnClear.addEventListener("click", (e) => clearFields(e));
 
 // обработчик нажатия клавиши Enter для добавления пользователя
-window.addEventListener("keypress", (e) => {
+window.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     if (
       +fldCountUsers.value != 0 &&
@@ -40,6 +40,13 @@ window.addEventListener("keypress", (e) => {
     ) {
       addUsers(e);
     }
+  }
+});
+
+// обработчик нажатия клавиши Escape для очистки полей формы
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    clearFields(e);
   }
 });
 
