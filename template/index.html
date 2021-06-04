@@ -70,7 +70,7 @@
 						aria-expanded="false">
 						Смоленск
 					</button>
-					<ul class="dropdown-menu cities" aria-labelledby="btnCities">
+					<ul class="dropdown-menu" aria-labelledby="btnCities">
 						<li><a class="dropdown-item first-item" href="#">Волгоград</a></li>
 						<li><a class="dropdown-item" href="#">Москва</a></li>
 						<li><a class="dropdown-item" href="#">Санкт-Петербург</a></li>
@@ -114,8 +114,66 @@
 			</div>
 		</div>
 	</header>
-	<section class="filters">
-		<div class="container"></div>
+	<section class="sub-types">
+		<div class="container">
+			<div class="row">
+				<div class="filters col-xl-6">
+					<div class="tabs">
+						<div class="tab tab-active" id="cars">Легковые</div>
+						<div class="tab" id="cargoCars">Грузовые</div>
+						<div class="tab" id="agroCars">Сельхоз / спецтехника</div>
+						<div class="tab" id="moto">Мото / квадроциклы</div>
+					</div>
+					<div class="tab-content active" id="carsContent">
+						<div class="sub-tabs">
+							<div class="sub-tab active">По параметрам</div>
+							<div class="sub-tab">По марке авто</div>
+						</div>
+						<div class="dropdown-types">
+							<div class="dropdown">
+								<button class="btn dropdown-toggle" type="button" id="width" data-bs-toggle="dropdown"
+									aria-expanded="false">
+									<strong>Ширина</strong>
+									Любая</button>
+								<ul class="dropdown-menu" aria-labelledby="btn">
+									<li><a class="dropdown-item first-item" href="#">100</a></li>
+									<li><a class="dropdown-item" href="#">200</a></li>
+									<li><a class="dropdown-item" href="#">300</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn dropdown-toggle" type="button" id="profile" data-bs-toggle="dropdown"
+									aria-expanded="false">
+									<strong>Профиль</strong>
+									Любой</button>
+								<ul class="dropdown-menu" aria-labelledby="btn">
+									<li><a class="dropdown-item first-item" href="#">100</a></li>
+									<li><a class="dropdown-item" href="#">200</a></li>
+									<li><a class="dropdown-item" href="#">300</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<button class="btn dropdown-toggle" type="button" id="diametr" data-bs-toggle="dropdown"
+									aria-expanded="false">
+									<strong>Диаметр</strong>
+									Любой</button>
+								<ul class="dropdown-menu" aria-labelledby="btn">
+									<li><a class="dropdown-item first-item" href="#">100</a></li>
+									<li><a class="dropdown-item" href="#">200</a></li>
+									<li><a class="dropdown-item" href="#">300</a></li>
+								</ul>
+							</div>
+						</div>
+						<button class="btn-show" id="btnShow">Показать <span id="countVariants">624 варианта</span></button>
+					</div>
+					<div class="tab-content" id="cargoCarsContent"></div>
+					<div class="tab-content" id="agroCarsContent"></div>
+					<div class="tab-content" id="motoContent"></div>
+				</div>
+				<div class="banner col-xl-3"></div>
+				<div class="slider col-xl-3"></div>
+			</div>
+		</div>
 	</section>
 
 	<!-- Подключение less.js -->

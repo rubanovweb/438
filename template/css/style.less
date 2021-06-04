@@ -8,6 +8,8 @@
 @darkTextColor: darken(@textColor, 20%);
 @lightTextColor: lighten(@textColor, 30%);
 
+
+// Общие свойства (начало)
 html {
 	font-size: @baseFontSize;
 }
@@ -61,6 +63,54 @@ nav {
 	padding-right: 50px !important;
 }
 
+
+.btn {
+	box-sizing: border-box;
+	position: relative;
+	color: @linkHeaderColor;
+	background-color: #D0D9DE;
+
+	&::after {
+		position: absolute;
+		top: 17px;
+		right: 14px;
+		width: 10px;
+		height: 5px;
+
+		border: none;
+		background-image: url("../img/icon-arrow.svg") !important;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+
+	&:focus {
+		box-shadow: none;
+	}
+}
+
+.dropdown-menu {
+	top: -20px !important;
+	padding-top: 20px;
+	background-color: #D0D9DE;
+
+	a {
+		position: relative;
+		font-size: @baseFontSize - 1px;
+		color: #2C393F;
+		opacity: 60%;
+
+		&:hover {
+			opacity: 1;
+			background-color: transparent !important;
+		}
+	}
+}
+
+// Общие свойства (конец)
+
+
+// Меню (начало)
 .menu {
 	display: flex;
 	justify-content: space-between;
@@ -118,6 +168,10 @@ nav {
 	}
 }
 
+// Меню (конец)
+
+
+// Авторизация (начало)
 .authorization {
 	padding: 0;
 
@@ -157,19 +211,16 @@ nav {
 	}
 }
 
-.geolocation {
+// Авторизация (конец)
 
+// Список городов (начало)
+.geolocation {
 	.btn {
-		position: relative;
 		z-index: 100 !important;
-		box-sizing: border-box;
 		padding: 8px 35px;
 		width: 165px;
-
 		font-size: @baseFontSize + 1px;
-		color: @linkHeaderColor;
 		border-radius: 24px;
-		background-color: #D0D9DE;
 
 		&::before {
 			position: absolute;
@@ -184,45 +235,12 @@ nav {
 			background-repeat: no-repeat;
 			background-position: center;
 		}
-
-		&::after {
-			position: absolute;
-			top: 17px;
-			right: 14px;
-			width: 10px;
-			height: 5px;
-
-			border: none;
-			background-image: url("../img/icon-arrow.svg") !important;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-		}
-
-		&:focus {
-			box-shadow: none;
-		}
 	}
 
-	.cities {
+	.dropdown-menu {
 		z-index: 99;
-		top: -20px !important;
-		padding-top: 20px;
 		width: 165px;
 		border-radius: 0 0 18px 18px;
-		background-color: #D0D9DE;
-
-		a {
-			position: relative;
-			font-size: @baseFontSize - 1px;
-			color: #2C393F;
-			opacity: 60%;
-
-			&:hover {
-				opacity: 1;
-				background-color: transparent !important;
-			}
-		}
 
 		.first-item::before {
 			position: absolute;
@@ -236,6 +254,9 @@ nav {
 	}
 }
 
+// Список городов (конец)
+
+// Телефоны (начало)
 .contacts {
 	display: flex;
 	padding: 0;
@@ -268,6 +289,10 @@ nav {
 	}
 }
 
+// Телефоны (конец)
+
+
+// Месенджеры (начало)
 .social-links {
 	display: flex;
 	padding-right: 20px;
@@ -312,6 +337,10 @@ nav {
 	}
 }
 
+// Месенджеры (конец)
+
+
+// Категории товаров и корзина (начало)
 .header-bottom {
 	margin-top: 30px;
 	border-radius: 5px;
@@ -424,9 +453,191 @@ nav {
 	}
 }
 
+// Категории товаров и корзина (конец)
+
+
+// Подтипы продукции (начало)
+
+.filters {
+	padding: 30px 35px;
+}
+
+.tabs {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid @lightTextColor;
+
+	.tab {
+		position: relative;
+		padding-bottom: 15px;
+		font-size: @baseFontSize + 1px;
+		color: @textColor;
+		transition: all 0.25s;
+
+		&:hover {
+			cursor: pointer;
+			color: @linkHeaderColor;
+		}
+
+		&:hover::after {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			content: "";
+
+			width: 100%;
+			height: 2px;
+			background-color: @accentColor;
+		}
+	}
+
+	.tab-active {
+		color: @linkHeaderColor;
+	}
+
+	.tab-active::after {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		content: "";
+
+		width: 100%;
+		height: 2px;
+		background-color: @accentColor;
+	}
+}
+
+
+.tab-content {
+	display: none;
+}
+
+.active {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.sub-tabs {
+	display: flex;
+	margin-top: 30px;
+	width: 387px;
+	border-radius: 5px;
+	border: 1px solid @lightTextColor;
+
+	.sub-tab {
+		position: relative;
+		width: 50%;
+		display: flex;
+		text-align: center;
+		align-items: flex-end;
+		height: 54px;
+		padding: 8px 28px;
+		font-weight: 500;
+		color: @textColor;
+		transition: all 0.25s;
+
+		&.active {
+			color: #ffffff;
+			background-color: #2C393F;
+
+			&::before {
+				color: #ffffff;
+			}
+		}
+
+		&:hover {
+			cursor: pointer;
+			// color: #ffffff;
+			// background-color: #2C393F;
+
+			// &::before {
+			// 	color: #ffffff;
+			// }
+		}
+
+		&:first-child {
+			border-radius: 5px 0 0 5px;
+		}
+
+		&::before {
+			position: absolute;
+			top: 5px;
+			content: "Подобрать";
+			font-weight: 600;
+			font-size: @baseFontSize - 5px;
+			color: @lightTextColor;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.dropdown-types {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 25px;
+
+	.dropdown {
+		width: 185px;
+	}
+
+	.btn {
+		position: relative;
+		z-index: 100;
+		display: flex;
+		flex-direction: column;
+		width: 185px;
+		height: 55px;
+		padding: 8px 16px;
+		font-weight: 500;
+		text-align: left;
+
+		strong {
+			text-transform: uppercase;
+			font-weight: 600;
+			font-size: @baseFontSize - 5px;
+			letter-spacing: 0.1em;
+			color: @textColor;
+		}
+
+		&::after {
+			top: 24px;
+		}
+	}
+
+	.dropdown-menu {
+		z-index: 99;
+		width: 100%;
+		top: -20px !important;
+		border-radius: 0 0 5px 5px;
+	}
+}
+
+.btn-show {
+	margin-left: auto;
+	margin-top: 45px;
+	padding: 16px 54px;
+	border-radius: 27px;
+	background-color: @accentColor;
+	font-size: @baseFontSize + 3px;
+	font-weight: 500;
+	color: #ffffff;
+}
+
+
+.banner {}
+
+.slider {}
 
 
 
+
+
+
+// Подтипы продукции (конец)
+
+
+// Медиа-запросы (начало)
 @media(min-width: 1368px) {
 	.container {
 		max-width: 1280px;
