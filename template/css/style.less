@@ -458,8 +458,16 @@ nav {
 
 // Подтипы продукции (начало)
 
+
+.sub-types .row {
+	justify-content: space-between;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-right: 0;
+}
+
 .filters {
-	padding: 30px 35px;
+	padding-left: 30px;
 }
 
 .tabs {
@@ -622,12 +630,226 @@ nav {
 	font-size: @baseFontSize + 3px;
 	font-weight: 500;
 	color: #ffffff;
+
+	&:hover {
+		background-color: #008C8C;
+	}
 }
 
 
-.banner {}
+.banner {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 30px;
+	padding-top: 20px;
+	max-width: 298px;
+	height: 425px;
+	color: #ffffff;
+	background-color: #2C393F;
+	background-image: url("../img/car.svg");
+	background-position: -385px 102px;
+	background-repeat: no-repeat;
+	border-radius: 0 8px 8px 0;
+	transition: all 0.75s;
 
-.slider {}
+	&:hover {
+		cursor: pointer;
+		background-position: -340px 102px;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	p,
+	span {
+		color: #F2F4F5;
+	}
+
+	.banner-title {
+		text-align: center;
+
+		h2 {
+			font-size: @baseFontSize + 9px !important;
+			margin-bottom: 10px;
+		}
+
+		p {
+			font-size: @baseFontSize + 1px;
+			line-height: @baseLineHeight;
+		}
+	}
+
+	.banner-links {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+
+		.link-consultation {
+			width: 165px;
+			margin: auto;
+			margin-bottom: 15px;
+			font-size: @baseFontSize + 1px;
+			border-bottom: 1px dashed #ffffff;
+
+			&:hover {
+				color: @accentColor;
+			}
+		}
+
+		.btn {
+			display: flex;
+			flex-direction: column;
+			font-size: @baseFontSize + 2px;
+			font-weight: 500;
+			border-radius: 27px;
+			border: 2px solid @textColor;
+			background-color: transparent;
+
+			span {
+				font-size: @baseFontSize - 5px;
+				font-weight: 600;
+				letter-spacing: 0.1em;
+			}
+
+			&:hover {
+				color: #ffffff;
+				background-color: @textColor;
+			}
+		}
+	}
+
+}
+
+.slider {
+	padding: 0;
+	max-width: 297px;
+
+	.carousel-item {
+		position: relative;
+		height: 427px;
+		background-image: url("../img/banner-bg.svg");
+		background-repeat: no-repeat;
+
+		&.banner-one {
+			background-image: url("../img/bg-car.svg"),
+				url("../img/banner-bg.svg");
+			background-position: right bottom,
+				0 0;
+			transition: all 0.5s;
+
+			&:hover {
+				cursor: pointer;
+				background-position: 175% bottom,
+					0 0;
+			}
+
+			&:hover .btn-show {
+				display: block;
+				color: #ffffff;
+			}
+		}
+
+		.btn-show {
+			display: none;
+			position: absolute;
+			z-index: 100;
+			left: 20px;
+			bottom: 50px;
+
+			transition: all 0.25s;
+		}
+
+		h2 {
+			position: absolute;
+			padding-top: 55px;
+			padding-left: 22px;
+			font-size: @baseFontSize + 17px;
+			font-weight: bold;
+			color: #2C393F;
+			text-shadow: -0 -4px 0 #FFFFFF,
+				0 -4px 0 #FFFFFF,
+				-0 4px 0 #FFFFFF,
+				0 4px 0 #FFFFFF,
+				-4px -0 0 #FFFFFF,
+				4px -0 0 #FFFFFF,
+				-4px 0 0 #FFFFFF,
+				4px 0 0 #FFFFFF,
+				-1px -4px 0 #FFFFFF,
+				1px -4px 0 #FFFFFF,
+				-1px 4px 0 #FFFFFF,
+				1px 4px 0 #FFFFFF,
+				-4px -1px 0 #FFFFFF,
+				4px -1px 0 #FFFFFF,
+				-4px 1px 0 #FFFFFF,
+				4px 1px 0 #FFFFFF,
+				-2px -4px 0 #FFFFFF,
+				2px -4px 0 #FFFFFF,
+				-2px 4px 0 #FFFFFF,
+				2px 4px 0 #FFFFFF,
+				-4px -2px 0 #FFFFFF,
+				4px -2px 0 #FFFFFF,
+				-4px 2px 0 #FFFFFF,
+				4px 2px 0 #FFFFFF,
+				-3px -4px 0 #FFFFFF,
+				3px -4px 0 #FFFFFF,
+				-3px 4px 0 #FFFFFF,
+				3px 4px 0 #FFFFFF,
+				-4px -3px 0 #FFFFFF,
+				4px -3px 0 #FFFFFF,
+				-4px 3px 0 #FFFFFF,
+				4px 3px 0 #FFFFFF,
+				-4px -4px 0 #FFFFFF,
+				4px -4px 0 #FFFFFF,
+				-4px 4px 0 #FFFFFF,
+				4px 4px 0 #FFFFFF,
+				-4px -4px 0 #FFFFFF,
+				4px -4px 0 #FFFFFF,
+				-4px 4px 0 #FFFFFF,
+				4px 4px 0 #FFFFFF;
+		}
+
+		&::after {
+			position: absolute;
+			top: 2px;
+			right: 0;
+
+			content: "Горячее предложение";
+
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			width: 156px;
+			height: 36px;
+			padding: 10px 13px;
+			border-radius: 0 4px 0 4px;
+
+			font-size: @baseFontSize - 5px;
+			font-weight: 500;
+			line-height: @baseLineHeight;
+			color: #ffffff;
+
+			background-color: #2C393F;
+			background-image: url("../img/icon-fire.svg");
+			background-repeat: no-repeat;
+			background-position: 13px center;
+		}
+	}
+
+	.carousel-indicators li {
+		width: 12px;
+		height: 12px;
+
+		border-radius: 100%;
+		background-color: @accentColor;
+
+		&.active {
+			background-color: darken(@accentColor, 10%);
+		}
+	}
+}
 
 
 
@@ -644,6 +866,14 @@ nav {
 	}
 }
 
+@media(max-width: 1367px) {
+
+	.dropdown-types .btn,
+	.dropdown-types .dropdown-menu {
+		width: 165px !important;
+	}
+}
+
 @media(max-width: 1199px) {
 	.logo img {
 		width: 90%;
@@ -651,6 +881,31 @@ nav {
 
 	header nav {
 		padding-right: 15px !important;
+	}
+
+	.sub-types .row {
+		justify-content: center;
+	}
+
+	.dropdown-types {
+		justify-content: center;
+	}
+
+	.filters {
+		margin-bottom: 25px;
+	}
+
+	.banner {
+		margin-right: 25px;
+	}
+
+	.btn-show {
+		margin: 0;
+		margin-top: 25px;
+	}
+
+	.tab-content {
+		justify-content: center;
 	}
 }
 
@@ -768,6 +1023,20 @@ nav {
 			border-right: none;
 		}
 	}
+
+	.tabs .tab {
+		font-size: @baseFontSize;
+	}
+
+	.dropdown-types .btn,
+	.dropdown-types .dropdown-menu {
+		width: 150px !important;
+	}
+
+	.banner {
+		margin-right: 0;
+		margin-bottom: 25px;
+	}
 }
 
 @media(max-width: 575px) {
@@ -806,5 +1075,50 @@ nav {
 		padding-left: 5px !important;
 		padding-right: 5px !important;
 		font-size: @baseFontSize - 3px !important;
+	}
+
+	.tabs {
+		flex-wrap: wrap;
+		border-bottom: none;
+	}
+
+	.tabs .tab {
+		width: 100%;
+		padding-bottom: 10px;
+		padding-top: 10px;
+	}
+
+	.sub-tabs .sub-tab {
+		font-size: 10px;
+	}
+
+	.dropdown-types {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.dropdown-types .dropdown,
+	.dropdown-types .dropdown .btn,
+	.dropdown-types .dropdown-menu {
+		width: 90% !important;
+	}
+
+	.dropdown-types .dropdown .btn {
+		margin-bottom: 20px;
+	}
+
+	.dropdown:last-child .btn {
+		margin-bottom: 0 !important;
+	}
+
+	.dropdown-types .dropdown-menu {
+		z-index: 200 !important;
+		top: -3px !important;
+		padding-top: 0 !important;
+		background-color: rgb(211, 250, 250);
+	}
+
+	.btn-show {
+		font-size: @baseFontSize - 1px;
 	}
 }
